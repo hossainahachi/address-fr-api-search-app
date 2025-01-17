@@ -5,54 +5,182 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Address Search</title>
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-      }
-      input,
-      button {
-        padding: 10px;
-        margin: 5px 0;
-      }
-      ul {
-        list-style-type: none;
+      /* General Reset */
+      * {
+        margin: 0;
         padding: 0;
+        box-sizing: border-box;
       }
+
+      body {
+        font-family: 'Roboto', Arial, sans-serif;
+        line-height: 1.6;
+        margin: 20px;
+        background-color: #f9f9f9;
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .container {
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        width: 100%;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #444;
+      }
+
+      form {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        font-weight: bold;
+        margin: 10px 0 5px;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      h2 {
+        margin: 20px 0 10px;
+        font-size: 1.2rem;
+        text-align: center;
+        color: #555;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
       li {
         background: #f4f4f4;
-        margin: 5px 0;
+        margin: 10px 0;
         padding: 10px;
         border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background 0.3s ease;
+      }
+
+      li:hover {
+        background: #e9e9e9;
+      }
+
+      li a {
+        color: #007bff;
+        text-decoration: none;
+      }
+
+      li a:hover {
+        text-decoration: underline;
+      }
+
+      li img {
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+      }
+
+      #paginationInfo {
+        text-align: center;
+        margin: 10px 0;
+        font-size: 1rem;
+        color: #777;
+      }
+
+      .pagination-buttons {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .pagination-buttons button {
+        flex: 1;
+        padding: 10px;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .pagination-buttons button:disabled {
+        background: #cccccc;
+        cursor: not-allowed;
+      }
+
+      .pagination-buttons button:hover:enabled {
+        background: #0056b3;
       }
     </style>
   </head>
   <body>
-    <h1>Address Search</h1>
-    <p>Type an address and limit the results:</p>
-    <form id="addressForm">
-      <label for="query">Address (q):</label><br />
-      <input
-        type="text"
-        id="query"
-        placeholder="Enter address..."
-        required
-      /><br />
-      <label for="limit">Limit:</label><br />
-      <input
-        type="number"
-        id="limit"
-        placeholder="Enter number of results..."
-        max="99"
-        required
-      /><br />
-      <button type="submit">Search</button>
-    </form>
-    <h2>Results</h2>
-    <ul id="results"></ul>
-    <p id="paginationInfo"></p>
-    <button id="prevPage" disabled>Previous</button>
-    <button id="nextPage" disabled>Next</button>
-
+    <div class="container">
+      <h1>Address Search</h1>
+      <p>Enter an address and specify the number of results:</p>
+      <form id="addressForm">
+        <label for="query">Address (q):</label>
+        <input
+          type="text"
+          id="query"
+          placeholder="Enter address (e.g., 10 Main Street)..."
+          required
+        />
+        <label for="limit">Limit:</label>
+        <input
+          type="number"
+          id="limit"
+          placeholder="Number of results (1-99)"
+          max="99"
+          required
+        />
+        <button type="submit">Search</button>
+      </form>
+      <h2>Results</h2>
+      <ul id="results"></ul>
+      <p id="paginationInfo"></p>
+      <div class="pagination-buttons">
+        <button id="prevPage" disabled>Previous</button>
+        <button id="nextPage" disabled>Next</button>
+      </div>
+    </div>
     <script src="/static/script.js"></script>
   </body>
 </html>
