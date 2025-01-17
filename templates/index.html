@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Address Search</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    input, button {
+      padding: 10px;
+      margin: 5px 0;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      background: #f4f4f4;
+      margin: 5px 0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Address Search</h1>
+  <p>Type an address and limit the results:</p>
+  <form id="addressForm">
+    <label for="query">Address (q):</label><br>
+    <input type="text" id="query" placeholder="Enter address..." required><br>
+    <label for="limit">Limit:</label><br>
+    <input type="number" id="limit" placeholder="Enter number of results..." required><br>
+    <button type="submit">Search</button>
+  </form>
+  <h2>Results</h2>
+  <ul id="results"></ul>
+  <script src="/static/script.js"></script>
+</body>
+</html>
